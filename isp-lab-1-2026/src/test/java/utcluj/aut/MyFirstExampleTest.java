@@ -18,5 +18,9 @@ public class MyFirstExampleTest {
         assertEquals(-2, MyFirstExample.subtract(-1, 1));
         assertEquals(1, MyFirstExample.subtract(-1, -2));
     }
+    @Test
+    public void testMultiply() {
+        assertEquals(6, MyFirstExample.multiply(2, 3));
+    }
 
 }
