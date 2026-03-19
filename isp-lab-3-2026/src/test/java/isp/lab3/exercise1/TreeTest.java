@@ -3,9 +3,9 @@ package isp.lab3.exercise1;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class Tree_Test {
+public class TreeTest {
     @Test
-    public void Tree_Test(){
+    public void TreeTest(){
         Tree tree=new Tree();
         assertEquals(15, tree.getHeight());
     }

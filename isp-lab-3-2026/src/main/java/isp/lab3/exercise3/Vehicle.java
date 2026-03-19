@@ -8,8 +8,8 @@ public class Vehicle {
     private static int instance=0;
 
     private void checkFuelType(char fuelType){
-        if(fuelType!='0' && fuelType!='8'){
-            System.out.println("Invalid fuel type. It can be '0' ir '8'");
+        if(fuelType!='B' && fuelType!='D'){
+            System.out.println("Invalid fuel type. It can be 'B' ir 'D'");
         }
         else{
             this.fuelType=fuelType;
@@ -39,6 +39,9 @@ public class Vehicle {
         return fuelType;
     }
 
+    public static int getInstance() {
+        return instance;
+    }
     public void setModel(String model) {
         this.model = model;
     }
@@ -56,7 +59,7 @@ public class Vehicle {
     }
     @Override
     public String toString() {
-        return this.model + "(" + this.type+ ") speed" + this.speed + "fuelType" + this.fuelType;
+        return this.model + " (" + this.type+ ") speed " + this.speed + " fuelType " + this.fuelType;
     }
     @Override
     public boolean equals(Object obj) {

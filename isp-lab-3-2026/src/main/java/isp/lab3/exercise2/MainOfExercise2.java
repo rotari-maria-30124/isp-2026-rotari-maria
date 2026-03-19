@@ -17,8 +17,7 @@ public class MainOfExercise2 {
         Rectangle r3=new Rectangle(2,3, "midnight");
         print(r3);
     }
-    public static void print(Rectangle(r)){
-        Rectangle r=new Rectangle();
+    public static void print(Rectangle r){
         System.out.println(r.toString());
         System.out.println("Area " + r.getArea());
         System.out.println("Perimeter " + r.getPerimeter());
