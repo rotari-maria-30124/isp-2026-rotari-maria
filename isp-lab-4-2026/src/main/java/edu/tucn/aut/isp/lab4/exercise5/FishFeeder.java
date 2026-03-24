@@ -1,4 +1,4 @@
-package edu.tucn.aut.isp.lab4.exercise3;
+package edu.tucn.aut.isp.lab4.exercise5;
 
 public class FishFeeder {
     private String manufacturer;

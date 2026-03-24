@@ -7,6 +7,7 @@ public class AquariumController {
     private String manufacturer;
     private String model;
     private LocalTime currentTime;
+
     public AquariumController(String manufacturer, String model){
         this.manufacturer=manufacturer;
         this.model=model;

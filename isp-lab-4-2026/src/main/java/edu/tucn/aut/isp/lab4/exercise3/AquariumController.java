@@ -25,6 +25,9 @@ public class AquariumController {
             fishFeeder.feed();
             feedFlag=true;
         }
+        else{
+            System.out.println("Nu e ora de hranire");
+        }
     }
     public void resetFlag(){
         feedFlag=false;

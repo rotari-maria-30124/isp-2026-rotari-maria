@@ -1,7 +1,5 @@
 package edu.tucn.aut.isp.lab4.exercise4;
 
-import edu.tucn.aut.isp.lab4.exercise3.FishFeeder;
-
 import java.time.LocalTime;
 
 public class AquariumController {
@@ -9,14 +7,14 @@ public class AquariumController {
     private String model;
     private LocalTime currentTime;
     private LocalTime feedingTime;
-    private edu.tucn.aut.isp.lab4.exercise3.FishFeeder fishFeeder;
+    private FishFeeder fishFeeder;
     private LocalTime lightsOnTime;
     private LocalTime lightsOffTime;
     private Lights lights;
 
     private boolean feedFlag;
 
-    public AquariumController(String manufacturer, String model, FishFeeder fishFeeder){
+    public AquariumController(String manufacturer, String model, FishFeeder fishFeeder, Lights lights){
         this.manufacturer=manufacturer;
         this.model=model;
         currentTime=LocalTime.now();
@@ -32,6 +30,9 @@ public class AquariumController {
         if(!currentTime.isBefore(feedingTime) && !feedFlag){
             fishFeeder.feed();
             feedFlag=true;
+        }
+        else{
+            System.out.println("Nu e ora de hranire");
         }
         if(!currentTime.isBefore(lightsOnTime) && lightsOnTime.isBefore(lightsOffTime)){
             this.lights.turnOn();
