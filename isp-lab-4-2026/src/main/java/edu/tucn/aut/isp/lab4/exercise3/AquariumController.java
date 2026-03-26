@@ -34,7 +34,7 @@ public class AquariumController {
     }
     @Override
     public String toString(){
-        return "AquariumController{" + "manufacturer= " + manufacturer + '\'' + ", model= " + '\'' + ", currentTime= " + currentTime + '}';
+        return "AquariumController{" + "manufacturer= " + manufacturer + '\'' + ", model= " + model + '\'' + ", currentTime= " + currentTime + '}';
     }
     //attributs
     //constructors

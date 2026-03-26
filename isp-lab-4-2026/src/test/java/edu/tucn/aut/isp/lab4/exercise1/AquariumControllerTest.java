@@ -15,9 +15,9 @@ class AquariumControllerTest {
     }
     @Test
     void testTime(){
-        AquariumController ac= new AquariumController("BOSH", "B1");
+        AquariumController ac= new AquariumController("BOSCH", "B1");
         ac.setCurrentTime(LocalTime.of(10, 0, 0));
-        assertEquals("AquariumController{manufacturer= 'BOSCH', model= 'B1', currentTime=10:00}", ac.toString());
+        assertEquals("AquariumController{manufacturer= BOSCH', model= B1', currentTime= 10:00}", ac.toString());
     }
 }
-}
+
