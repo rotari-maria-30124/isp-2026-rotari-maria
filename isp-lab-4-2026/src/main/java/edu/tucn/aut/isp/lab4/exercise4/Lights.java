@@ -7,10 +7,14 @@ public class Lights {
     }
     public void turnOn(){
         isOn=true;
-        System.out.println("Lights is on");
+        System.out.println("Lights ON");
     }
     public void turnOff(){
         isOn=false;
-        System.out.println("Lights is off");
+        System.out.println("Lights OFF");
+    }
+
+    public boolean isOn() {
+        return isOn;
     }
 }

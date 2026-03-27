@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FishFeederTest {
     @Test
-    void testTime(){
+    void test(){
         FishFeeder fishFeeder=new FishFeeder("JBL", "PRONOVO AUTOFOOD");
         fishFeeder.fillUp();
         fishFeeder.feed();

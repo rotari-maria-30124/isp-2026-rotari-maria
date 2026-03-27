@@ -25,4 +25,7 @@ public class Actuator {
                 ", on='" + on +
                 '}';
     }
+    public boolean isOn() {
+        return on;
+    }
 }
