@@ -4,6 +4,5 @@ public abstract class Sensor {
     private String installation;
     private String name;
 
-    public abstract int measureValue();
-    }
+    public abstract double measureValue();
 }

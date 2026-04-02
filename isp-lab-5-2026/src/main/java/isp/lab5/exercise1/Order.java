@@ -25,4 +25,12 @@ public class Order {
             this.totalPrice+=product.getPrice();
         }
     }
+    @Override
+    public String toString(){
+        return "Order: \n" +
+                "product='" + products + '\n' +
+                "customer='" + customer + '\n' +
+                "Total price= " + totalPrice +
+                '}';
+    }
 }
