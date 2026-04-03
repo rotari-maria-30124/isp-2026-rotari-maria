@@ -25,6 +25,11 @@ public class Order {
             this.totalPrice+=product.getPrice();
         }
     }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
     @Override
     public String toString(){
         return "Order: \n" +
