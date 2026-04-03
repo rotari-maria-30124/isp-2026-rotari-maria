@@ -3,11 +3,13 @@ package isp.lab5.exercise3;
 public class TemperatureSensor extends Sensor{
     private double temperature;
 
-    public TemperatureSensor(double temperature){
-        this.temperature=temperature;
+    public TemperatureSensor(String installation, String name, double temperature) {
+        super(installation, name);
+        this.temperature = temperature;
     }
+
     @Override
-    public double measureValue(){
+    public double measureValue() {
         return temperature;
     }
 }
