@@ -28,4 +28,9 @@ public class Vehicle {
     public boolean equals(Object obj){ //asta trb suprascris ca sa stie HashSet pe baza a ce sa faca hash si comparatie
         return this.VIN.hashCode()==(((Vehicle) obj).VIN.hashCode());
     }
+
+    @Override
+    public String toString(){
+        return "VEHICLE:\n" + "VIN= " + VIN + "\nmake= " + make + "\nmodel= " + model + "\nyear= " + year;
+    }
 }

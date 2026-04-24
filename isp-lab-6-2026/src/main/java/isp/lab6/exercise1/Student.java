@@ -10,6 +10,7 @@ public class Student {
     public Student(String name, String ID){
         this.name=name;
         this.ID=ID;
+        this.grades=new HashMap<>();
     }
 
     public void addGrade(String subject, Integer grade){
@@ -35,12 +36,22 @@ public class Student {
         return sb.toString();
     }
 
-        public HashMap<String, Integer> getGrades(){
+    public String getID() {
+        return ID;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public HashMap<String, Integer> getGrades(){
             return grades;
         }
 
         @Override
         public String toString(){
-        return "Student: " + name + ", ID: " + ID + ", grades:\n" + getGradesString();
+        return "Student: " + name + "\nID: " + ID + "\nGrades:\n" + getGradesString();
         }
 }
