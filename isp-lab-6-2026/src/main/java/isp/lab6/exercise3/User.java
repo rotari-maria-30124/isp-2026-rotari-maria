@@ -11,6 +11,9 @@ public class User {
     public String getUsername() {
         return username;
     }
+    public String getPassword() {
+        return password;
+    }
     @Override
     public int hashCode() {
         return this.username.hashCode();

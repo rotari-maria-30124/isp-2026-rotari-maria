@@ -15,6 +15,11 @@ public class Product {
     public int hashCode() {
         return this.name.hashCode();
     }
+
+    public double getPrice() {
+        return price;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return this.name.hashCode()==(((Product) obj).name.hashCode());

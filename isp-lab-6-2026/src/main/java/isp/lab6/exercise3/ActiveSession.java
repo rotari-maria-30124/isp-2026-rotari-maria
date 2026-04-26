@@ -32,4 +32,8 @@ public class ActiveSession {
     public HashMap<Product, Integer> getShoppingCart() {
         return shoppingCart;
     }
+    @Override
+    public String toString(){
+        return "User: " + username + "\nCart:\n" + getShoppingCartString();
+    }
 }
