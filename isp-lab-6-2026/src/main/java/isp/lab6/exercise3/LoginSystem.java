@@ -25,5 +25,6 @@ public class LoginSystem {
     }
     public boolean logout(String username){
         store.removeSession(username);
+        return true;
     }
 }

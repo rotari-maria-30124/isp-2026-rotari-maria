@@ -7,8 +7,8 @@ public class UserInterface {
     private LoginSystem loginSyst;
     private OnlineStore store;
 
-    public UserInterface(LoginSystem loginSystem, OnlineStore store) {
-        this.loginSyst = loginSystem;
+    public UserInterface(LoginSystem loginSyst, OnlineStore store) {
+        this.loginSyst = loginSyst;
         this.store = store;
     }
     public void loadInterface() {
@@ -21,13 +21,13 @@ public class UserInterface {
         if (loginSyst.login(username, password)) {
             System.out.println("Logged in!\n");
             System.out.println("Products available:");
-            for (Product p : store.getProducts()) {
-                System.out.println(p);
+            for (Product product : store.getProducts()) {
+                System.out.println(product);
             }
             if (!store.getProducts().isEmpty()) {
-                Product p = store.getProducts().get(0);
-                store.addToCart(username, p, 2);
-                System.out.println("\nAdded to cart: " + p.getName());
+                Product product = store.getProducts().get(0);
+                store.addToCart(username, product, 2);
+                System.out.println("\nAdded to cart: " + product.getName());
             }
             System.out.println("\nCheckout:");
             store.checkout(username);
