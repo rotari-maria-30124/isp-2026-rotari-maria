@@ -15,4 +15,8 @@ public class Door {
     public DoorStatus getStatus(){
         return status;
     }
+    @Override
+    public String toString(){
+        return "Door status: " + status;
+    }
 }
