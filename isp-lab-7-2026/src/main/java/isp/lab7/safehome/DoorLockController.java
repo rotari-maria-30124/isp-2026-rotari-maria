@@ -2,15 +2,13 @@ package isp.lab7.safehome;
 
 import java.util.HashMap;
 import java.util.Map;
-
 public class DoorLockController {
     private Map<Tenant, AccessKey> validAccess=new HashMap<>();
     private Door door=new Door();
     private int attempts=0;
 
     private final String MASTER_PIN="0000";
-
-    public DoorStatus enterPin(String pin) throws InvalidPinException{
+    public DoorStatus enterPin(String pin) throws Exception{
         if(pin.equals("1")){
             door.unlockDoor();
             return door.getStatus();
@@ -36,5 +34,19 @@ public class DoorLockController {
             throw new TooManyAttemptsException();
         }
         throw new InvalidPinException();
+    }
+    public void addTenant(String pin, String name) throws Exception{
+        Tenant tenant=new Tenant(name);
+        if(validAccess.containsKey(tenant)){
+            throw new TenantAlreadyExistsException();
+        }
+        validAccess.put(tenant, new AccessKey(pin));
+    }
+    public void removeTenant(String name) throws Exception{
+        Tenant tenant=new Tenant(name);
+        if(!validAccess.containsKey(tenant)){
+            throw new TenantNotFoundException();
+        }
+        validAccess.remove(tenant);
     }
 }
