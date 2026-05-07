@@ -1,4 +1,4 @@
-package isp.lab8.airways.model;
+package isp.lab8.airways.Model;
 
 import java.util.Objects;
 
@@ -14,6 +14,10 @@ public class Waypoint {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -34,6 +38,29 @@ public class Waypoint {
         return true;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public int getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(int altitude) {
+        this.altitude = altitude;
+    }
 
     @Override
     public int hashCode(){

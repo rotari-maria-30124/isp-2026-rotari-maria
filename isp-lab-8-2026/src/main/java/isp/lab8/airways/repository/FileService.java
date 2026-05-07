@@ -1,9 +1,9 @@
-package isp.lab8.airways.repository;
+package isp.lab8.airways.Repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import examples.files.FilesAndFoldersUtil;
-import isp.lab8.airways.model.Route;
-import isp.lab8.airways.model.Waypoint;
+import isp.lab8.airways.Model.Route;
+import isp.lab8.airways.Model.Waypoint;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,14 +40,14 @@ public class FileService implements FileServiceInterface {
     }
 
     public Waypoint loadWaypoint(String path) {
-
+        return null;
     }
 
     @Override
     public List<Route> readAll() {
         return List.of();
     }
-    //pt a citi lista de rute,trebe logica extra ca sa citeasca prima data subfolderele si dupa contentu
+    //pt a citi lista de rute,trebuie logica extra ca sa citeasca prima data subfolderele si dupa contentu
 
     //TODO: RouteNotFoundException, WaypointNotFoundException
 }

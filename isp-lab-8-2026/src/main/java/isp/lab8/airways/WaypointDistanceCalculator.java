@@ -16,11 +16,18 @@ public class WaypointDistanceCalculator {
         double lat2 = 44.4268;
         double lon2 = 26.1025;
 
+        //Tasnad
+        double lat3=47.0548;
+        double lon3=23.9212;
+        //Sopot
+        double lat4=46.9804;
+        double lon4=24.7365;
         // Calculate the distance between the two waypoints
         double distance = calculateDistance(lat1, lon1, lat2, lon2);
-
+        double distance2 = calculateDistance(lat3, lon3, lat4, lon4);
         // Print the result
         System.out.println("The distance between the two waypoints is: " + distance + " kilometers");
+        System.out.println("The distance between the two waypoints is: " + distance2 + " kilometers");
     }
 
     // Method to calculate the distance between two waypoints using the haversine formula
@@ -34,6 +41,17 @@ public class WaypointDistanceCalculator {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double distance = earthRadius * c;
         return distance;
+    }
+    public static double calculateDistance2(double lat3, double lon3, double lat4, double lon4) {
+        int earthRadius = 6371; // Radius of the Earth in kilometers
+        double dLat1 = Math.toRadians(lat4 - lat3);
+        double dLon1 = Math.toRadians(lon4 - lon3);
+        double b = Math.sin(dLat1 / 2) * Math.sin(dLat1 / 2) +
+                Math.cos(Math.toRadians(lat3)) * Math.cos(Math.toRadians(lat4)) *
+                        Math.sin(dLon1 / 2) * Math.sin(dLon1 / 2);
+        double c1 = 2 * Math.atan2(Math.sqrt(b), Math.sqrt(1 - b));
+        double distance2 = earthRadius * c1;
+        return distance2;
     }
 }
 

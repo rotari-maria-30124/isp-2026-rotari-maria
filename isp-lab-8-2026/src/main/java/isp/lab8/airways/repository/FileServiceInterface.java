@@ -1,6 +1,6 @@
-package isp.lab8.airways.repository;
+package isp.lab8.airways.Repository;
 
-import isp.lab8.airways.model.Route;
+import isp.lab8.airways.Model.Route;
 
 import java.util.List;
 
