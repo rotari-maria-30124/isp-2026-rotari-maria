@@ -22,6 +22,12 @@ public class CarRace {
         Car car2 = new Car("Blue car", carPanel);
         Car car3 = new Car("Green car", carPanel);
         Car car4 = new Car("Yellow car", carPanel);
+
+        car1.start();
+        car2.start();
+        car3.start();
+        car4.start();
+
     }
     
 }
