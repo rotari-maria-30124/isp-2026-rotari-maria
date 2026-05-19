@@ -8,4 +8,7 @@ public class TakeOffCommand extends AtcCommand{
         this.altitude=altitude;
     }
 
+    public int getAltitude() {
+        return altitude;
+    }
 }
