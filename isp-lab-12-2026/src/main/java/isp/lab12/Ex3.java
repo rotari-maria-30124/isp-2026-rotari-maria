@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ex3 {
 
     public int findLongestLength(ArrayList<String> list){
-        list.stream()
+       return list.stream()
                 .mapToInt(s -> s.length())
                 .max()
                 .orElse(0);
