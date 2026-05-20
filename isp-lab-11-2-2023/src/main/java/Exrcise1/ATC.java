@@ -6,6 +6,9 @@ import java.util.Map;
 public class ATC {
     private Map<String, Aircraft> aircrafts;
 
+    public ATC(){
+        this.aircrafts=new HashMap<>();
+    }
     public ATC(HashMap<String, Aircraft> aircrafts){
         this.aircrafts=aircrafts;
     }

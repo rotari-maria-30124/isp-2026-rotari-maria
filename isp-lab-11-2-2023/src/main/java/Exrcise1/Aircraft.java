@@ -8,18 +8,21 @@ public class Aircraft implements Runnable {
     private State state;
     private final Object lock;
     private int assignedAltitude;
+    private long cruiseTime;
 
     public Aircraft(String id) {
         this.id = id;
         this.altitude = 0;
         this.state = State.ON_STAND;
         this.lock = new Object();
-        System.out.println("Aircraft " + id + "is created. Ready to take off. State: " + state);
+        System.out.println("Aircraft " + id + " is created. Ready to take off. State: " + state);
         this.assignedAltitude = 0;
+        this.cruiseTime=0;
     }
 
     public void receiveAtcCommand(AtcCommand atcCommand) {
         if (atcCommand instanceof TakeOffCommand && this.state == State.ON_STAND) {
+            this.assignedAltitude=((TakeOffCommand) atcCommand).getAltitude();
             takeOff();
         } else if (atcCommand instanceof LandCommand) {
             land();
@@ -28,68 +31,88 @@ public class Aircraft implements Runnable {
 
     private void takeOff() {
         synchronized (lock) {
-            this.notify();
+            lock.notify();
         }
     }
 
     private void land() {
         if (this.state == State.CRUISING) {
             synchronized (lock) {
-                this.notify();
+                lock.notify();
             }
-        } else System.out.println();
+        } else System.out.println("Aircraft " + id + " cannot receive land command. Current state: " + state);
     }
 
     public State getState() {
         return state;
     }
 
+    public String getId() {
+        return id;
+    }
+
     @Override
     public void run() {
-        System.out.println("Aircraft " + id + "is waiting for TAKEOFF_CMD");
+        System.out.println("Aircraft " + id + " is waiting for TAKEOFF_CMD");
         synchronized (lock) {
             try {
-                wait();
+                lock.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         this.state = State.TAXIING;
-        System.out.println("Aircraft " + id + "is taxiing");
+        System.out.println("Aircraft " + id + " is taxiing");
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.state = State.TAKING_OFF;
-        System.out.println("Aircraft " + id + "is taking off");
+        System.out.println("Aircraft " + id + " is taking off");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.state = State.ASCENDING;
-        System.out.println("Aircraft " + id + "is ascending");
+        System.out.println("Aircraft " + id + " is ascending");
         try {
             while (this.altitude < this.assignedAltitude) {
-                Thread.sleep(100000);
+                Thread.sleep(10000);
                 this.altitude += 1000;
-                System.out.println();
+                System.out.println("Aircraft " + id + " is ascending. Current altitude: " + this.altitude);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.state = State.CRUISING;
-        System.out.println();
+        cruiseTime=System.currentTimeMillis();
+        System.out.println("Aircraft " + id + " reached cruising altitude. Current altitude: " + this.altitude);
         synchronized (lock) {
             try {
-                System.out.println("Aircraft " + id + "zzz");
-                this.wait();
+                System.out.println("Aircraft " + id + " is waiting for LAND_CMD.");
+                lock.wait();
+                System.out.println("Aircraft " + id + " received LAND_CMD.");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        //descendindg si landing
+        this.state=State.DESCENDING;
+        System.out.println("Aircraft " + id + " is descending");
+        try{
+            while(this.altitude>0){
+                this.altitude-=1000;
+                System.out.println("Aircraft " + id + " is descending. Current altitude: " + this.altitude);
+                Thread.sleep(10000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.state=State.LANDED;
+        System.out.println("Aircraft " + id + " landed");
+        long cruiseT=(System.currentTimeMillis()-cruiseTime/1000);
+        System.out.println("Aircraft " + id + " spent " + cruiseTime + " seconds cruising");
     }
 
     @Override
